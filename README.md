@@ -151,3 +151,22 @@ interface AppComponent {
 
 P.S. за подсказками в https://github.com/dekabrsky/MobileDevelopmentCourseLabApp/tree/feature/comment 
 
+### Практика "Сеть"
+В этой практике вам предстоит сделать первые сетевые запросы. 
+
+1. Добавьте в Android Manifest нужные разрешения. https://developer.android.com/develop/connectivity/network-ops/connecting
+2. Мы будем использовать библиотеки RxJava3 для асинхронности, OkHttp и Retrofit для работы с сетью. Добавьте их в зависимости gradle и сделайте sync. [пример](https://github.com/Mobile-Development-Course-LAB-USUE/MobileDevelopmentCourseLabApp/blob/feature/network/app/build.gradle)
+3. Выберите API, с которым будете работать. На паре мы работали с https://api.chucknorris.io/ - там можно получить случайную шутку про Чака Норриса. Еще могу посоветовать https://api-ninjas.com/api - там есть много различных api. Например, информация о городах (https://api-ninjas.com/api/city), погоде (https://api-ninjas.com/api/weather), машинах, самолетах и так далее. Если вы хотите воспользоваться api-ninjas, нужно будет зарегистрироваться и получить токен.
+4. Посмотрите, какой объект отдает выбранный api и создайте соответствующую модель в kotlin. [Пример](https://github.com/Mobile-Development-Course-LAB-USUE/MobileDevelopmentCourseLabApp/blob/feature/network/app/src/main/kotlin/com/example/mobiledevelopmentcourselabapp/data/model/ChuckJokeResponse.kt)
+5. Настройте ваш http-клиент. Лучше всего это сделать во внедряемом Provider. В нем создается OkHttp-клиент (сделайте так, чтобы он логировал запросы, а для api-ninjas добавлял токен в заголовок), который потом передается в Retrofit. Для retrofit указывается базовый url, конвертер (из json в объекты котлина), адаптер для rxjava. [Пример](https://github.com/Mobile-Development-Course-LAB-USUE/MobileDevelopmentCourseLabApp/blob/feature/network/app/src/main/kotlin/com/example/mobiledevelopmentcourselabapp/data/provider/RetrofitProvider.kt)
+6. Создайте интерфейс api, который будет отражением эндпойнтов сервера и того, что и как вы хотите из них получить. Используйте аннотации @GET. [Пример](https://github.com/Mobile-Development-Course-LAB-USUE/MobileDevelopmentCourseLabApp/blob/feature/network/app/src/main/kotlin/com/example/mobiledevelopmentcourselabapp/data/api/ChuckApi.kt)
+7. Определите Dagger-модуль, который свяжет ваш api и provider. Обращение к эндпойнтам будет работать через определенный в провайдере клиент. Не забудьте добавить модуль в компонент. [пример](https://github.com/Mobile-Development-Course-LAB-USUE/MobileDevelopmentCourseLabApp/blob/feature/network/app/src/main/kotlin/com/example/mobiledevelopmentcourselabapp/di/module/ApiModule.kt)
+8. При желании реализуйте чистую архитектуру. Подробнее мы ее разберем позже. [почитать](https://habr.com/ru/companies/otus/articles/732178/)
+9. Перепишите ArticleFragment на MVP аналогично практике "Комментарий". Работа с сетью будет вестись в Presenter.
+10. Чтобы сделать запрос, добавьте ваш api/repository/useCase в конструктор Presenter (он заинжектится). Вызовите метод, соответствующий нужному запросу. Чтобы запрос выполнился, нужно подписаться на результат выполнения (метод subscribe).
+11. Позаботьтесь о том, чтобы запрос ожидался в отдельном потоке, а его результат использовался в основном. [пример](https://github.com/Mobile-Development-Course-LAB-USUE/MobileDevelopmentCourseLabApp/blob/feature/network/app/src/main/kotlin/com/example/mobiledevelopmentcourselabapp/presentation/view/article/presenter/ArticlePresenter.kt)
+12. В методе subscribe вызовите метод фрагмента, который поставит информацию в интерфейс. Основная часть практики закончена - результат из сети получен. На тот случай, если результат не получен, сделайте показ ошибки. (onError)
+13. Дополнительно - сделайте запрос кастомизируемым. Например, выбрать категорию шутки, набрать город для получения информации о нем и т.д. 
+14. Дополнительно - реализуйте визуализацию состояния загрузки. 
+15. В отчет включите скриншот логов или network inspector, где виден момент выполенения запроса. Ну и то, что получилось на экране, тоже
+16. Повторите пп. 14-16 из первой практики
