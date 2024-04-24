@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/offset_medium"
     tools:context=".presentation.view.article.ArticleFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/offset_medium"
+        android:gravity="center"
+        android:text="Зарипов подал документы для участия в предварительном голосовании «Единой России»"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Антон Некрасов"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="24 апреля 2024, 15:02 МСК"
+        android:textSize="16sp" />
+
+    <TextView
+        style="@style/RegularText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Пятикратный обладатель Кубка Гагарина Данис Зарипов может стать членом партии «Единая Россия». Экс-хоккеист подал документы для участия в предварительном голосовании. Также он написал заявление на вступление в сторонники партии. На выборах президента РФ 2024 года спортсмен был доверенным лицом Владимира Путина."
+        android:layout_marginTop="@dimen/offset_medium"
+        android:textSize="@dimen/offset_medium" />
+
+    <ImageView
+        android:id="@+id/mainPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="@dimen/offset_medium"
+        android:background="@color/teal_200"
+        android:scr="@drawable/photo"/>
+
+    <TextView
+        style="@style/RegularText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="«Хотелось бы заниматься развитием физической культуры и спорта в Татарстане и по всей стране. Планирую уделять особое внимание детскому хоккею и детскому спорту в целом. Важно увеличивать количество спортивных объектов и создавать комфортные условия для занятий спортом. Хочется, чтобы открывалось больше секций и клубов и каждый ребёнок мог получить второй шанс в спортивной карьере», — заявил Зарипов."
+        android:layout_marginTop="@dimen/offset_medium"
+        android:textSize="@dimen/offset_medium" />
+
+
+</LinearLayout>
+</ScrollView>

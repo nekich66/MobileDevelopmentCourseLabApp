@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
+import com.example.mobiledevelopmentcourselabapp.R
 import com.example.mobiledevelopmentcourselabapp.databinding.FragmentArticleBinding
 
 class ArticleFragment : Fragment() {
@@ -21,6 +23,14 @@ class ArticleFragment : Fragment() {
         _binding = FragmentArticleBinding.inflate(inflater, container, false)
         val root: View = binding.root
         // Обращайся к элементам View здесь
+
+        context?.let {
+            Glide
+                .with(it)
+                .load("https://img.championat.com/s/732x488/news/big/x/m/zaripov-podal-dokumenty-dlya-uchastiya-v-predvaritelnom-golosovanii-edinoj-rossii_1713960113310716593.jpg")
+                .placeholder(AppCompatResources.getDrawable(it, R.drawable.photo))
+                .into(binding.mainPhoto)
+        }
 
         return root
     }
