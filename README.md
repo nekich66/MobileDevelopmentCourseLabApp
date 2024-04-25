@@ -70,4 +70,5 @@
 14. Этой реакцией станет запуск Intent для отправки данных. Он запустит стандартный экран шеринга https://developer.android.com/training/sharing/send
 15. Повторите пп. 14-16 из первой практики
 
+task1 ![img.png](img.png)
 
