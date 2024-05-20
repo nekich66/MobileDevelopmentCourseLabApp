@@ -1,6 +1,36 @@
 <resources>
     <string name="app_name">MobileDevelopmentCourseLabApp</string>
     <string name="title_article">Статья</string>
-    <string name="title_second">Второй</string>
+    <string name="title_list">Cписок</string>
     <string name="title_third">Третий</string>
+    <string name="article_title">Новое поколения Хендэ Солярис</string>
+    <string name="age_title">Возраст</string>
+    <string name="position">Позиция</string>
+    <string name="team">Команда</string>
+    <string name="infoTitle">Информация</string>
+    <string name="stats">Статистика Игр</string>
+    <string name="count_pattern">%d %s</string>
+    <string name="age_pattern">Возраст: %d %s</string>
+    <string name="share">Поделиться</string>
+
+
+    <plurals name="age">
+        <item quantity="one">год</item>
+        <item quantity="few">года</item>
+        <item quantity="many">лет</item>
+        <item quantity="other">лет</item>
+    </plurals>
+    <plurals name="games">
+        <item quantity="one">игра</item>
+        <item quantity="few">игры</item>
+        <item quantity="many">игр</item>
+        <item quantity="other">игр</item>
+    </plurals>
+
+    <plurals name="goals">
+        <item quantity="one">гол</item>
+        <item quantity="few">гола</item>
+        <item quantity="many">голов</item>
+        <item quantity="other">голов</item>
+    </plurals>
 </resources>
