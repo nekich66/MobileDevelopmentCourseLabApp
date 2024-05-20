@@ -16,4 +16,45 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">11sp</item>
     </style>
+    <style name="TextView.H4" parent="BoldText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+    <style name="TextView.H4.Regular" parent="RegularText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+    <style name="TextView.H6" parent="BoldText">
+    </style>
+    <style name="TextView.Button" parent="RegularText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="TextView.Button.Medium" parent="BoldText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="TextView.Subtitle2.Medium" parent="BoldText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+    <style name="TextView.OverLine" parent="RegularText">
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:letterSpacing">0.035</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="TextView.Caption" parent="RegularText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

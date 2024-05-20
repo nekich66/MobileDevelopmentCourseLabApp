@@ -1,17 +1,17 @@
 package com.example.mobiledevelopmentcourselabapp.presentation.view.second
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView.VERTICAL
+import androidx.navigation.findNavController
+import com.example.mobiledevelopmentcourselabapp.R
 import com.example.mobiledevelopmentcourselabapp.databinding.FragmentListBinding
 import com.example.mobiledevelopmentcourselabapp.presentation.view.list.generator.Generator
 import com.example.mobiledevelopmentcourselabapp.presentation.view.second.adapter.PlayersAdapter
+import com.example.mobiledevelopmentcourselabapp.presentation.view.second.model.PlayerUiModel
 
 
 class ListFragment : Fragment() {
@@ -20,7 +20,7 @@ class ListFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val adapter by lazy { PlayersAdapter() }
+    private val adapter by lazy { PlayersAdapter(::onPlayerClicked) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +30,6 @@ class ListFragment : Fragment() {
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Обращайся к элементам View здесь
         return root
     }
 
@@ -38,33 +37,18 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.playersList.adapter = adapter
         adapter.updateItems(Generator.generate())
-        val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
-        binding.playersList.addItemDecoration(dividerItemDecoration)
+        //  val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
+        // binding.playersList.addItemDecoration(dividerItemDecoration)
 
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Log.d("Log", "${this::class.simpleName} - onAttach")
+    private fun onPlayerClicked(player: PlayerUiModel) {
+        val bundle = bundleOf(CardFragment.CARD_PLAYER_KEY to player)
+        view?.findNavController()?.navigate(R.id.action_navigation_list_to_cardFragment, bundle)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d("Log", "${this::class.simpleName} - onCreate")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("Log", "${this::class.simpleName} - onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("Log", "${this::class.simpleName} - onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("Log", "${this::class.simpleName} - onPause")
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
